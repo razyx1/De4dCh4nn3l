@@ -4,6 +4,11 @@
 
 
 int main() {
-    printf("Test");
+    int poruka;
+
+
+    printf("Ukucajte poruku...\n");
+    scanf("%d", &poruka);
+    printf("%d\n", poruka);
     return 0;
 }
