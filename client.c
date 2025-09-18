@@ -15,9 +15,9 @@ int main(){
 
     int connection = connect(network_socket, (struct sockaddr *) &server_address, sizeof(server_address));
     for(int i = 3; connection == -1; i--) {
-        printf("FATAL ERROR, THE SERVER FAILED TO FIRE UP.\nRETRYING...");
+        printf("FATAL ERROR, THE SERVER FAILED TO FIRE UP. RETRYING...\n");
         if(i == 0) {
-            printf("FATAL ERROR, RETRIES EXTINGUISHED.");
+            printf("FATAL ERROR, RETRIES EXTINGUISHED.\n");
             return 1;
         }
     }
@@ -30,8 +30,6 @@ int main(){
         printf("SERVER DATA: %s\n", server_response);
         printf("HAPPY HACKING!\n");
     }
-
-    close(network_socket);
 
     return 0;
 }

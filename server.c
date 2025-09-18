@@ -26,7 +26,5 @@ int main(){
 
     send(client_socket, server_message, sizeof(server_message), 0);
 
-    close(server_socket);
-
     return 0;
 }
