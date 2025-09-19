@@ -30,7 +30,7 @@ int main(){
     recv(network_socket, &server_response, sizeof(server_response), 0); // Same here
     printf("%s", server_response); //Print the request
     char username[256]; //Variable for input
-    scanf("%s", &username);
+    scanf("%s", username);
     send(network_socket, username, sizeof(username), 0); //Send the variable for auth check
 
     return 0;
