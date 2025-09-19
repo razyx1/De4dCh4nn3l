@@ -5,8 +5,6 @@
 #include <netinet/in.h>
 
 int main(){
-    char server_message[256] = "SERVER REACHED";
-
     int server_socket;
     server_socket = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -22,9 +20,33 @@ int main(){
     //Listener
     listen(server_socket, 3);
 
-    int client_socket = accept(server_socket, NULL, NULL);
+    char valid_users[][64] = {
+        "razyx",
+        "mixxa"
+    };
 
-    send(client_socket, server_message, sizeof(server_message), 0);
+    int client_socket = accept(server_socket, NULL, NULL);
+    char username[256];
+    char userString[] = "Username: ";
+    send(client_socket, userString, sizeof(userString), 0);
+    recv(client_socket, username, sizeof(username), 0);
+
+    if(username) {
+        int true_flag = 0;
+        for(int i = 0; i < sizeof(valid_users) || true_flag != 0; i++) {
+            if(username == valid_users[i]) true_flag = 1;
+        }
+        switch(true_flag){
+            case 0:
+                printf("\nFuck off feds\n");
+                return 0;
+            case 1:
+                break;
+        }
+    } else {
+        printf("\nFuck off feds\n");
+        return 0;
+    }
 
     return 0;
 }
