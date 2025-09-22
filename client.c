@@ -25,13 +25,21 @@ int main(){
 
     printf("Connection to DedSec servers established.\n");
 
-    //send username and password for auth check
-    char server_response[256]; //Get server requests
+    // send username for auth check
+    char server_response[256]; // Get server requests
     recv(network_socket, &server_response, sizeof(server_response), 0); // Same here
-    printf("%s", server_response); //Print the request
-    char username[256]; //Variable for input
-    scanf("%s", &username);
-    send(network_socket, username, sizeof(username), 0); //Send the variable for auth check
+    printf("%s", server_response); // Print the request
+    char username[256]; // Variable for input
+    scanf("%s", username);
+    send(network_socket, username, sizeof(username), 0); // Send the variable for auth check
+
+    // send password for auth check
+    recv(network_socket, &server_response, sizeof(server_response), 0);
+    printf("%s", server_response); // Printing request
+    char password[256]; // Variable for input
+    scanf("%s", password);
+    send(network_socket, password, sizeof(password), 0); // Send the variable for auth check
+
 
     return 0;
 }
